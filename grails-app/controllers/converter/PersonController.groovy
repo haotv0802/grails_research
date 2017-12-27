@@ -5,7 +5,7 @@ import grails_research.Person
 class PersonController {
     static responseFormats = ['json', 'html']
 
-    static allowedMethods = [save: "POST", list: "GET"]
+    static allowedMethods = [save: "POST", list: "GET", remove: "DELETE"]
 
     def save() {
 
@@ -20,6 +20,17 @@ class PersonController {
     }
 
     def list() {
+        respond Person.list()
+    }
+
+    def remove() {
+        def person = Person.get(params.id)
+        if (null != person) {
+            person.delete(flush: true)
+        } else {
+            println "Person is not existing"
+        }
+
         respond Person.list()
     }
 }
