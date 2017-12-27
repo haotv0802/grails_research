@@ -9,21 +9,12 @@ class PersonController {
 
     def save() {
 
-        def p = new Person(name: "Fred", age: 45, lastVisit: new Date())
-        p.save()
-
-//        def list = new ArrayList()
-//        def book = new Book()
-//        book.name = "new book"
-//        book.year = "1234"
-//        list.add(book)
-//
-//        book = new Book()
-//        book.name = "new book1"
-//        book.year = "1232224"
-//        list.add(book)
-//        respond list
-
+//        def p = new Person(params.person)
+//        p.save(flush: true)
+//        respond p
+        System.out.println(request.JSON)
+//        respond Person.list()
+        def p = new Person(request.JSON)
         p.save()
         respond p
     }
