@@ -26,4 +26,15 @@ class CategoriesController {
         respond Category.list()
     }
 
+    def getCategoryById() {
+        respond Category.findById(params.id)
+    }
+
+    def getCategoryByName() {
+        respond Category.findAllByName(params.name)
+    }
+
+    def getCount() {
+        render Category.count() + 10
+    }
 }
