@@ -1,5 +1,6 @@
 package converter
 
+import grails_research.Item
 import grails_research.Person
 
 class PersonController {
@@ -23,6 +24,9 @@ class PersonController {
         respond Person.list()
     }
 
+    def listItems() {
+        respond Item.list();
+    }
     def remove() {
         def person = Person.get(params.id)
         if (null != person) {

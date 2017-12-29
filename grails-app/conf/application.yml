@@ -102,16 +102,16 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: ""
-            url: jdbc:mysql://localhost:3306/grails_db
+            dbCreate: update
+            url: jdbc:mysql://localhost:3306/crawler_db
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:mysql://localhost:3306/grails_db
+            url: jdbc:mysql://localhost:3306/crawler_db
     production:
         dataSource:
             dbCreate: none
-            url: jdbc:mysql://localhost:3306/grails_db
+            url: jdbc:mysql://localhost:3306/crawler_db
             properties:
                 jmxEnabled: true
                 initialSize: 5
