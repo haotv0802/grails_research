@@ -27,7 +27,7 @@ class CategoriesController {
     }
 
     def getCategoryById() {
-        respond Category.findById(params.id)
+        respond Category.findById(params.id).items
     }
 
     def getCategoryByName() {

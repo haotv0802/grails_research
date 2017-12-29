@@ -15,6 +15,7 @@ class Item {
     Date publishDate
     Date endDate
     String url
+    static hasMany = [categories: Category]
 
     static constraints = {
     }
@@ -25,5 +26,7 @@ class Item {
         contactNumber column: "contact_number"
         publishDate column: "publish_date"
         endDate column: "end_date"
+        categories joinTable: [name: "crwlr_categories_items_details", key: "item_id"]
+        categories lazy: false
     }
 }

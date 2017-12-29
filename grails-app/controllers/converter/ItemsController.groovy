@@ -8,4 +8,8 @@ class ItemsController {
     def listItems() {
         respond Item.list()
     }
+
+    def getItemById() {
+        respond Item.findById(params.id).categories
+    }
 }
