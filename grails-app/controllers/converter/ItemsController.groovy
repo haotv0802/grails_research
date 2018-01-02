@@ -5,7 +5,7 @@ import grails_research.Item
 class ItemsController {
     static responseFormats = ['json']
 
-    def listItems() {
+    def list() {
         respond Item.list()
     }
 
