@@ -1,12 +1,15 @@
 package converter
 
 import grails_research.Item
+import items.ItemsService
 
 class ItemsController {
     static responseFormats = ['json']
 
+    def itemsService
+
     def list() {
-        respond Item.list()
+        respond itemsService.getAllItems()
     }
 
     def getItemById() {
