@@ -1,18 +1,23 @@
 package converter
 
+import grails.converters.JSON
 import grails_research.Item
-import items.ItemsService
 
 class ItemsController {
-    static responseFormats = ['json']
+  static responseFormats = ['json', 'html']
 
-    def itemsService
+  def itemsService
 
-    def list() {
-        respond itemsService.getAllItems()
-    }
+  def list() {
+    respond itemsService.getAllItems()
+  }
 
-    def getItemById() {
-        respond Item.findById(params.id).categories
-    }
+  def getItemsByCriterion() {
+    respond itemsService.getAllItemsByCriterion(params.contactName, params.contactEmail)
+    render params.contactName
+  }
+
+  def getItemById() {
+    respond Item.findById(params.id).categories
+  }
 }
