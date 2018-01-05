@@ -27,3 +27,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
+
+
+// Added by the Spring Security OAuth2 Google Plugin:
+grails.plugin.springsecurity.oauth2.domainClass = 'auth.oauth.OAuthID'

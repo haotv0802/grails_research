@@ -1,5 +1,6 @@
 package auth
 
+import auth.oauth.OAuthID
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import grails.compiler.GrailsCompileStatic
@@ -17,6 +18,8 @@ class User implements Serializable {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+
+    static hasMany = [oAuthIDs: OAuthID]
 
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
