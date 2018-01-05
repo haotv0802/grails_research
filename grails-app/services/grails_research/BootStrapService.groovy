@@ -1,17 +1,14 @@
-package converter
+package grails_research
 
 import auth.Role
 import auth.User
 import auth.UserRole
-import grails.plugin.springsecurity.annotation.Secured
-import grails_research.Item
+import grails.gorm.transactions.Transactional
 
-class ItemsController {
-  static responseFormats = ['json', 'html']
+@Transactional
+class BootStrapService {
 
-  def itemsService
-
-  def list() {
+  def init = { servletContext ->
     User admin = new User(username: 'admin', password: 'secret', enabled: true).save()
     User john = new User(username: 'john', password: 'secret', enabled: true).save()
     User jane = new User(username: 'jane', password: 'secret', enabled: true).save()
@@ -20,16 +17,7 @@ class ItemsController {
     UserRole.create(admin, royalty)
     UserRole.create(admin, common)
     UserRole.create(john, common)
-    respond itemsService.getAllItems()
   }
-
-  @Secured(['ROLE_ROYALTY'])
-  def getItemsByCriterion() {
-    respond itemsService.getAllItemsByCriterion(params.contactName, params.contactEmail)
-    render params.contactName
-  }
-
-  def getItemById() {
-    respond Item.findById(params.id).categories
+  def destroy = {
   }
 }
